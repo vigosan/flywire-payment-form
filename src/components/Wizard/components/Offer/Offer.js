@@ -11,7 +11,7 @@ function Price({ amount, currency }) {
   }).format(amount);
 }
 
-function OfferBox({ name, price, onClick }) {
+function OfferBox({ name, price, exchangeRate, onClick }) {
   return (
     <div className="Offer-box" onClick={onClick}>
       <img
@@ -26,6 +26,7 @@ function OfferBox({ name, price, onClick }) {
           currency={price.currency.code}
         />
       </span>
+      <span className="Offer-exchangeRate">Exchange Rate {exchangeRate}</span>
       <Button
         className="Button Button--primary Button--block"
         onClick={onClick}

@@ -16,10 +16,10 @@
 .Offer-list {
   display: flex;
   text-align: center;
-  text-transform: uppercase;
 }
 
 .Offer-box {
+  min-width: 300px;
   padding: 25px;
   margin-bottom: 100px;
 
@@ -43,6 +43,7 @@
   letter-spacing: 1px;
   font-size: 16px;
   min-height: 75px;
+  text-transform: uppercase;
 }
 
 .Offer-price {
@@ -50,5 +51,11 @@
   display: block;
   font-size: 32px;
   font-weight: 700;
+}
+
+.Offer-exchangeRate {
+  display: block;
+  color: #888;
   margin-bottom: 45px;
+  font-size: 14px;
 }
