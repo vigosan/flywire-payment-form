@@ -19,7 +19,9 @@
 }
 
 .Offer-box {
-  min-width: 300px;
+  flex-grow: 1;
+  min-width: 50%;
+  max-width: 50%;
   padding: 25px;
   margin-bottom: 10px;
 

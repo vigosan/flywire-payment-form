@@ -3,7 +3,7 @@ import { Button } from "flycomponents";
 import {
   useFlywireContext,
   useFormContext,
-  useStepsContext
+  useStepsContext,
 } from "../../../../contexts";
 import { Spinner } from "../../../Spinner";
 import "./Offer.scss";
@@ -11,7 +11,7 @@ import "./Offer.scss";
 function Price({ amount, currency }) {
   return new Intl.NumberFormat("en-EN", {
     style: "currency",
-    currency: "EUR"
+    currency: "EUR",
   }).format(amount);
 }
 
@@ -43,7 +43,7 @@ function OfferBox({ name, price, exchangeRate, onClick }) {
 
 function Offer() {
   const { flywire } = useFlywireContext();
-  const { handleChange, values } = useFormContext();
+  const { handleChange } = useFormContext();
   const { goToNextStep, goToPrevStep } = useStepsContext();
 
   const [offers, setOffers] = useState([]);
@@ -78,7 +78,7 @@ function Offer() {
     <div className="Amount">
       <h2>Select an offer</h2>
       <div className="Offer-list">
-        {offers.map(offer => (
+        {offers.map((offer) => (
           <OfferBox
             {...offer}
             key={offer.id}
