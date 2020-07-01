@@ -20,10 +20,18 @@ function Amount() {
     recipient,
     dirtyFields,
     goToNextStep,
+    goToPrevStep,
     handleChange,
+    values,
   } = useFlywireContext();
   const { isValid, errors } = useValidate({ amount }, constraints);
   const { currency = {} } = recipient;
+
+  useEffect(() => {
+    if (values?.amount) {
+      setAmount(values.amount);
+    }
+  }, [values]);
 
   useEffect(() => {
     inputRef.current.select();
@@ -55,6 +63,7 @@ function Amount() {
         error={dirtyFields?.amount && errors?.amount && errors?.amount[0]}
         onChange={handleAmountChange}
         forwardRef={inputRef}
+        value={values.amount}
       />
       <Button
         className="Button Button--primary Button--block"
@@ -63,6 +72,9 @@ function Amount() {
       >
         Next
       </Button>
+      <span className="Button--link" onClick={goToPrevStep}>
+        or go back
+      </span>
     </div>
   );
 }

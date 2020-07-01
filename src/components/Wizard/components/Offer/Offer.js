@@ -38,7 +38,12 @@ function OfferBox({ name, price, exchangeRate, onClick }) {
 }
 
 function Offer() {
-  const { flywire, goToNextStep, handleChange } = useFlywireContext();
+  const {
+    flywire,
+    goToNextStep,
+    goToPrevStep,
+    handleChange,
+  } = useFlywireContext();
   const [offers, setOffers] = useState([]);
 
   useEffect(() => {
@@ -79,6 +84,9 @@ function Offer() {
           />
         ))}
       </div>
+      <span className="Button--link" onClick={goToPrevStep}>
+        or go back
+      </span>
       <div className="Offer-info">
         <h3>Have you found a better offer?</h3>
         <p>Contact our sales team and we will try to make you happy.</p>

@@ -21,7 +21,7 @@
 .Offer-box {
   min-width: 300px;
   padding: 25px;
-  margin-bottom: 100px;
+  margin-bottom: 10px;
 
   .Button {
     opacity: 0;
@@ -58,4 +58,8 @@
   color: #888;
   margin-bottom: 45px;
   font-size: 14px;
+}
+
+.Offer-info {
+  margin-top: 20px;
 }
