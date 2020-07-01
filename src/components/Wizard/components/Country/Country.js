@@ -1,5 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { useFlywireContext } from "../../../../contexts";
+import {
+  useFlywireContext,
+  useFormContext,
+  useStepsContext
+} from "../../../../contexts";
 import { Spinner } from "../../../Spinner";
 import "./Country.scss";
 
@@ -17,7 +21,10 @@ function CountryBox({ name, code, onClick }) {
 }
 
 function Country({ error, onChange }) {
-  const { flywire, handleChange, goToNextStep } = useFlywireContext();
+  const { flywire } = useFlywireContext();
+  const { handleChange } = useFormContext();
+  const { goToNextStep } = useStepsContext();
+
   const [countries, setCountries] = useState([]);
 
   useEffect(() => {
@@ -50,7 +57,7 @@ function Country({ error, onChange }) {
     <div className="Country">
       <h2>Select your country</h2>
       <div className="Country-list">
-        {countries.map((country) => (
+        {countries.map(country => (
           <CountryBox
             {...country}
             key={country.code}

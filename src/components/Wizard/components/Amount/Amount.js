@@ -1,29 +1,29 @@
 import React, { useState, useRef, useEffect } from "react";
 import { useValidate } from "@flywire/react-hooks";
 import { MoneyInput as MoneyInputFly, Button } from "flycomponents";
-import { useFlywireContext } from "../../../../contexts";
+import {
+  useAppContext,
+  useStepsContext,
+  useFormContext
+} from "../../../../contexts";
 import "./Amount.scss";
 
 const constraints = {
   amount: {
     presence: true,
     numericality: {
-      greaterThan: 0,
-    },
-  },
+      greaterThan: 0
+    }
+  }
 };
 
 function Amount() {
+  const { goToNextStep, goToPrevStep } = useStepsContext();
+  const { recipient } = useAppContext();
+  const { dirtyFields, handleChange, values } = useFormContext();
+
   const inputRef = useRef();
   const [amount, setAmount] = useState(0);
-  const {
-    recipient,
-    dirtyFields,
-    goToNextStep,
-    goToPrevStep,
-    handleChange,
-    values,
-  } = useFlywireContext();
   const { isValid, errors } = useValidate({ amount }, constraints);
   const { currency = {} } = recipient;
 

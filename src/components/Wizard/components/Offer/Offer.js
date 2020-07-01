@@ -1,13 +1,17 @@
 import React, { useState, useEffect } from "react";
 import { Button } from "flycomponents";
-import { useFlywireContext } from "../../../../contexts";
+import {
+  useFlywireContext,
+  useFormContext,
+  useStepsContext
+} from "../../../../contexts";
 import { Spinner } from "../../../Spinner";
 import "./Offer.scss";
 
 function Price({ amount, currency }) {
   return new Intl.NumberFormat("en-EN", {
     style: "currency",
-    currency: "EUR",
+    currency: "EUR"
   }).format(amount);
 }
 
@@ -17,10 +21,10 @@ function OfferBox({ name, price, exchangeRate, onClick }) {
       <img
         src="https://s22.postimg.cc/8mv5gn7w1/paper-plane.png"
         alt=""
-        class="pricing-img"
+        className="pricing-img"
       />
-      <h2 class="Offer-header">{name}</h2>
-      <span class="Offer-price">
+      <h2 className="Offer-header">{name}</h2>
+      <span className="Offer-price">
         <Price
           amount={price.value / price.currency.subunitToUnit}
           currency={price.currency.code}
@@ -38,12 +42,10 @@ function OfferBox({ name, price, exchangeRate, onClick }) {
 }
 
 function Offer() {
-  const {
-    flywire,
-    goToNextStep,
-    goToPrevStep,
-    handleChange,
-  } = useFlywireContext();
+  const { flywire } = useFlywireContext();
+  const { handleChange, values } = useFormContext();
+  const { goToNextStep, goToPrevStep } = useStepsContext();
+
   const [offers, setOffers] = useState([]);
 
   useEffect(() => {
@@ -76,7 +78,7 @@ function Offer() {
     <div className="Amount">
       <h2>Select an offer</h2>
       <div className="Offer-list">
-        {offers.map((offer) => (
+        {offers.map(offer => (
           <OfferBox
             {...offer}
             key={offer.id}

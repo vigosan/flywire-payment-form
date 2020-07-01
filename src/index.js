@@ -1,18 +1,30 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import "./index.scss";
-import { FlywireProvider } from "./contexts";
+import {
+  AppProvider,
+  FlywireProvider,
+  FormProvider,
+  StepsProvider
+} from "./contexts";
 import { Recipient, Wizard } from "./components";
 import * as serviceWorker from "./serviceWorker";
+import { steps } from "./components/Wizard";
 
 ReactDOM.render(
   <React.StrictMode>
-    <FlywireProvider>
-      <div className="container">
-        <Recipient />
-        <Wizard />
-      </div>
-    </FlywireProvider>
+    <AppProvider>
+      <FlywireProvider>
+        <FormProvider>
+          <StepsProvider steps={steps}>
+            <div className="container">
+              <Recipient />
+              <Wizard />
+            </div>
+          </StepsProvider>
+        </FormProvider>
+      </FlywireProvider>
+    </AppProvider>
   </React.StrictMode>,
   document.getElementById("root")
 );

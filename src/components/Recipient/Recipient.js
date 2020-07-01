@@ -1,9 +1,10 @@
 import React, { useEffect } from "react";
-import { useFlywireContext } from "../../contexts";
+import { useAppContext, useFlywireContext } from "../../contexts";
 import "./Recipient.scss";
 
 function Recipient() {
-  const { flywire, recipient, setRecipient } = useFlywireContext();
+  const { flywire } = useFlywireContext();
+  const { recipient, setRecipient } = useAppContext();
 
   useEffect(() => {
     if (recipient) {

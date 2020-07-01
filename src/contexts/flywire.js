@@ -1,41 +1,15 @@
-import React, { createContext, useContext, useState } from "react";
+import React, { createContext, useContext } from "react";
 import Flywire from "@flywire/flywire-js";
-import { useStep, useForm } from "@flywire/react-hooks";
-import { steps } from "../components/Wizard";
 
 const FlywireContext = createContext();
 
-function FlywireProvider({ children }) {
-  const flywire = Flywire({ mock: true });
-  const [recipient, setRecipient] = useState({});
-  const { values, handleChange, dirtyFields } = useForm();
-  const { index, navigation, complete } = useStep({
-    initialStep: 0,
-    steps,
-  });
-
-  function goToNextStep() {
-    complete(index);
-    navigation.next();
-  }
-
-  function goToPrevStep() {
-    navigation.prev();
-  }
+function FlywireProvider({ token, children }) {
+  const flywire = Flywire({ mock: true, token });
 
   return (
     <FlywireContext.Provider
       value={{
-        goToNextStep,
-        goToPrevStep,
-        flywire,
-        dirtyFields,
-        handleChange,
-        index,
-        steps,
-        values,
-        recipient,
-        setRecipient,
+        flywire
       }}
     >
       {children}

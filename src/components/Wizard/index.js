@@ -1,16 +1,16 @@
 import React from "react";
-import { useFlywireContext } from "../../contexts";
+import { useStepsContext } from "../../contexts";
 import { Amount, Country, Offer, Payment } from "./components";
 
 const steps = [
   { id: "country", element: <Country /> },
   { id: "amount", element: <Amount /> },
   { id: "offer", element: <Offer /> },
-  { id: "payment", element: <Payment /> },
+  { id: "payment", element: <Payment /> }
 ];
 
 function Step() {
-  const { steps, index } = useFlywireContext();
+  const { steps, index } = useStepsContext();
   return steps[index].element;
 }
 

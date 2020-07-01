@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useFlywireContext } from "../../../../contexts";
+import { useFlywireContext, useFormContext } from "../../../../contexts";
 import { Spinner } from "../../../Spinner";
 import "./Payment.scss";
 
@@ -9,15 +9,15 @@ function createMarkup(html) {
 
 function Instructions({ instructions = [] }) {
   return (
-    <div class="Instructions">
+    <div className="Instructions">
       {instructions.map(({ label, value }) => {
         return (
-          <div class="Instruction-Row">
-            <div class="Instruction-Cell">
+          <div className="Instruction-Row" key={label}>
+            <div className="Instruction-Cell">
               <p>{label}</p>
             </div>
             <div
-              class="Instruction-Cell"
+              className="Instruction-Cell"
               dangerouslySetInnerHTML={createMarkup(value)}
             />
           </div>
@@ -28,7 +28,9 @@ function Instructions({ instructions = [] }) {
 }
 
 function Payment() {
-  const { flywire, values } = useFlywireContext();
+  const { flywire } = useFlywireContext();
+  const { values } = useFormContext();
+
   const [payment, setPayment] = useState({});
 
   useEffect(() => {
@@ -38,9 +40,8 @@ function Payment() {
       const { id: orderId, token } = await flywire.order.create(values);
       const response = await flywire.payment.create({
         orderId,
-        token,
+        token
       });
-      console.log(response);
       setPayment(response);
     }
 
