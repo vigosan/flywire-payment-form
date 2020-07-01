@@ -1,5 +1,5 @@
 import React from "react";
-import { useFlywireContext } from "../../contexts/app";
+import { useFlywireContext } from "../../contexts";
 import { Amount, Country, Offer, Payment } from "./components";
 
 const steps = [
