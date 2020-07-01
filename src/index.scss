@@ -1,0 +1,18 @@
+@import url("https://fonts.googleapis.com/css?family=Rubik:400,500,700&subset=latin-ext");
+@import "~flystyles/src/config";
+@import "~flystyles/src/_mixins";
+@import "~flystyles/src/reboot";
+@import "~flystyles/src/utilities";
+@import "~flystyles/src/components/Alert/Alert";
+@import "~flystyles/src/components/Button/Button";
+@import "~flystyles/src/components/Input/Input";
+@import "~flystyles/src/components/Autocomplete/Autocomplete";
+@import "~flystyles/src/components/InputGroup/InputGroup";
+@import "~flystyles/src/components/FileInput/FileInput";
+@import "~flystyles/src/components/FormGroup/FormGroup";
+@import "~flystyles/src/components/Label/Label";
+
+.container {
+  width: 580px;
+  margin: 50px auto;
+}

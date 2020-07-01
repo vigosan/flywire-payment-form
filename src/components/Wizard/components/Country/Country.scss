@@ -1,0 +1,38 @@
+.Country {
+  margin-top: 30px;
+  text-align: center;
+}
+
+.Country-list {
+  display: flex;
+}
+
+.Country-box {
+  flex: 1;
+  border-bottom: 1px solid #f2f2f2;
+  border-right: 1px solid #f2f2f2;
+  padding: 10px 28px;
+  margin-bottom: 100px;
+
+  &:last-child {
+    border-right: 0;
+  }
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  img {
+    margin-right: 15px;
+  }
+}
+
+.Country-info {
+  text-align: center;
+
+  h3 {
+    font-size: 18px;
+    font-weight: lighter;
+    line-height: 6px;
+  }
+}

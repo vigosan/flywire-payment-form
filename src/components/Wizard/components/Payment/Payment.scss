@@ -1,0 +1,25 @@
+.Payment {
+  margin-top: 30px;
+  text-align: center;
+}
+
+.Instructions {
+  display: table;
+}
+
+.Instruction-Row {
+  display: table-row;
+
+  .Instruction-Cell {
+    display: table-cell;
+    padding: 5px 10px;
+
+    &:first-child {
+      background-color: #f2f2f2;
+    }
+
+    &:last-child {
+      border-top: 1px solid #f2f2f2;
+    }
+  }
+}
