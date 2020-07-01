@@ -3,8 +3,8 @@ import Flywire from "@flywire/flywire-js";
 
 const FlywireContext = createContext();
 
-function FlywireProvider({ token, children }) {
-  const flywire = Flywire({ mock: true, token });
+function FlywireProvider({ children, token, mock = false }) {
+  const flywire = Flywire({ mock, token });
 
   return (
     <FlywireContext.Provider

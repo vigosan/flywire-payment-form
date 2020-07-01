@@ -5,7 +5,7 @@ import {
   AppProvider,
   FlywireProvider,
   FormProvider,
-  StepsProvider
+  StepsProvider,
 } from "./contexts";
 import { Recipient, Wizard } from "./components";
 import * as serviceWorker from "./serviceWorker";
@@ -14,7 +14,7 @@ import { steps } from "./components/Wizard";
 ReactDOM.render(
   <React.StrictMode>
     <AppProvider>
-      <FlywireProvider>
+      <FlywireProvider mock={true}>
         <FormProvider>
           <StepsProvider steps={steps}>
             <div className="container">
