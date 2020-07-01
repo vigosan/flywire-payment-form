@@ -5,17 +5,35 @@
 
 .Country-list {
   display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 100px;
 }
 
 .Country-box {
-  flex: 1;
+  flex-grow: 1;
+  min-width: 33.33%;
+  max-width: 33.33%;
   border-bottom: 1px solid #f2f2f2;
   border-right: 1px solid #f2f2f2;
-  padding: 10px 28px;
-  margin-bottom: 100px;
+  padding: 10px 22px;
+  display: flex;
+  align-items: center;
 
-  &:last-child {
-    border-right: 0;
+  &:nth-child(3n + 1) {
+    border-left: 1px solid #f2f2f2;
+  }
+
+  &:nth-child(-n + 3) {
+    border-top: 1px solid #f2f2f2;
+  }
+
+  &:hover {
+    background-color: #f2f2f2;
+  }
+
+  span {
+    font-size: 14px;
+    display: inline-block;
   }
 
   &:hover {
@@ -23,7 +41,9 @@
   }
 
   img {
-    margin-right: 15px;
+    margin-right: 10px;
+    width: 50px;
+    border-radius: 18px;
   }
 }
 
