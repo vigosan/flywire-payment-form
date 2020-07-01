@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { Button } from "flycomponents";
-import { useAppContext } from "../../../../contexts";
+import { useFlywireContext } from "../../../../contexts";
+import { Spinner } from "../../../Spinner";
 import "./Offer.scss";
 
 function Price({ amount, currency }) {
   return new Intl.NumberFormat("en-EN", {
     style: "currency",
-    currency: "EUR"
+    currency: "EUR",
   }).format(amount);
 }
 
@@ -36,7 +37,7 @@ function OfferBox({ name, price, onClick }) {
 }
 
 function Offer() {
-  const { flywire, values, goToNextStep, handleChange } = useAppContext();
+  const { flywire, goToNextStep, handleChange } = useFlywireContext();
   const [offers, setOffers] = useState([]);
 
   useEffect(() => {
@@ -61,11 +62,15 @@ function Offer() {
     goToNextStep();
   }
 
+  if (offers.length === 0) {
+    return <Spinner />;
+  }
+
   return (
     <div className="Amount">
       <h2>Select an offer</h2>
       <div className="Offer-list">
-        {offers.map(offer => (
+        {offers.map((offer) => (
           <OfferBox
             {...offer}
             key={offer.id}

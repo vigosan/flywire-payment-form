@@ -1,6 +1,6 @@
-import React, { useState, useEffect, useCallback } from "react";
-import { Autocomplete } from "flycomponents";
-import { useAppContext } from "../../../../contexts";
+import React, { useState, useEffect } from "react";
+import { useFlywireContext } from "../../../../contexts";
+import { Spinner } from "../../../Spinner";
 import "./Country.scss";
 
 function CountryBox({ name, code, onClick }) {
@@ -9,6 +9,7 @@ function CountryBox({ name, code, onClick }) {
       <img
         src={`https://www.countryflags.io/${code}/flat/64.png`}
         loading="lazy"
+        alt=""
       />
       <span>{name}</span>
     </div>
@@ -16,7 +17,7 @@ function CountryBox({ name, code, onClick }) {
 }
 
 function Country({ error, onChange }) {
-  const { flywire, handleChange, goToNextStep } = useAppContext();
+  const { flywire, handleChange, goToNextStep } = useFlywireContext();
   const [countries, setCountries] = useState([]);
 
   useEffect(() => {
@@ -41,11 +42,15 @@ function Country({ error, onChange }) {
     goToNextStep();
   }
 
+  if (countries.length === 0) {
+    return <Spinner />;
+  }
+
   return (
     <div className="Country">
       <h2>Select your country</h2>
       <div className="Country-list">
-        {countries.map(country => (
+        {countries.map((country) => (
           <CountryBox
             {...country}
             key={country.code}

@@ -1,9 +1,9 @@
-import React, { useEffect, useCallback } from "react";
-import { useAppContext } from "../../contexts/app";
+import React, { useEffect } from "react";
+import { useFlywireContext } from "../../contexts";
 import "./Recipient.scss";
 
 function Recipient() {
-  const { flywire, recipient, setRecipient } = useAppContext();
+  const { flywire, recipient, setRecipient } = useFlywireContext();
 
   useEffect(() => {
     if (recipient) {
@@ -30,7 +30,7 @@ function Recipient() {
 
   return (
     <div className="Recipient">
-      <img src={recipient?.logoUrl} height="50px" loading="lazy" />
+      <img src={recipient?.logoUrl} height="50px" loading="lazy" alt="" />
     </div>
   );
 }

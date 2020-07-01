@@ -1,18 +1,18 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import "./index.scss";
-import { AppProvider } from "./contexts";
+import { FlywireProvider } from "./contexts";
 import { Recipient, Wizard } from "./components";
 import * as serviceWorker from "./serviceWorker";
 
 ReactDOM.render(
   <React.StrictMode>
-    <AppProvider>
+    <FlywireProvider>
       <div className="container">
         <Recipient />
         <Wizard />
       </div>
-    </AppProvider>
+    </FlywireProvider>
   </React.StrictMode>,
   document.getElementById("root")
 );

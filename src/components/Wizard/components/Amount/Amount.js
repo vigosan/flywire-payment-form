@@ -1,29 +1,33 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { useValidate } from "@flywire/react-hooks";
 import { MoneyInput as MoneyInputFly, Button } from "flycomponents";
-import { useAppContext } from "../../../../contexts";
+import { useFlywireContext } from "../../../../contexts";
 import "./Amount.scss";
 
 const constraints = {
   amount: {
     presence: true,
     numericality: {
-      greaterThan: 0
-    }
-  }
+      greaterThan: 0,
+    },
+  },
 };
 
 function Amount() {
+  const inputRef = useRef();
   const [amount, setAmount] = useState(0);
   const {
     recipient,
-    values,
     dirtyFields,
     goToNextStep,
-    handleChange
-  } = useAppContext();
+    handleChange,
+  } = useFlywireContext();
   const { isValid, errors } = useValidate({ amount }, constraints);
   const { currency = {} } = recipient;
+
+  useEffect(() => {
+    inputRef.current.select();
+  }, []);
 
   if (Object.keys(currency).length === 0) {
     return null;
@@ -50,6 +54,7 @@ function Amount() {
         thousandsSeparator={currency.thousandsSeparator}
         error={dirtyFields?.amount && errors?.amount && errors?.amount[0]}
         onChange={handleAmountChange}
+        forwardRef={inputRef}
       />
       <Button
         className="Button Button--primary Button--block"

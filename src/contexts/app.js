@@ -3,15 +3,15 @@ import Flywire from "@flywire/flywire-js";
 import { useStep, useForm } from "@flywire/react-hooks";
 import { steps } from "../components/Wizard";
 
-const AppContext = createContext();
+const FlywireContext = createContext();
 
-function AppProvider({ children }) {
+function FlywireProvider({ children }) {
   const flywire = Flywire({ mock: true });
   const [recipient, setRecipient] = useState({});
   const { values, handleChange, dirtyFields } = useForm();
   const { index, navigation, complete } = useStep({
     initialStep: 0,
-    steps
+    steps,
   });
 
   function goToNextStep() {
@@ -24,7 +24,7 @@ function AppProvider({ children }) {
   }
 
   return (
-    <AppContext.Provider
+    <FlywireContext.Provider
       value={{
         goToNextStep,
         goToPrevStep,
@@ -35,20 +35,20 @@ function AppProvider({ children }) {
         steps,
         values,
         recipient,
-        setRecipient
+        setRecipient,
       }}
     >
       {children}
-    </AppContext.Provider>
+    </FlywireContext.Provider>
   );
 }
 
-function useAppContext() {
-  const context = useContext(AppContext);
+function useFlywireContext() {
+  const context = useContext(FlywireContext);
   if (context === undefined) {
-    throw new Error("useAppContext must be used withinh a AppProvider");
+    throw new Error("useFlywireContext must be used withinh a FlywireProvider");
   }
   return context;
 }
 
-export { AppContext, AppProvider, useAppContext };
+export { FlywireContext, FlywireProvider, useFlywireContext };

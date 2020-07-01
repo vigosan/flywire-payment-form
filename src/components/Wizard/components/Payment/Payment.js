@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { Button } from "flycomponents";
-import { useAppContext } from "../../../../contexts";
+import { useFlywireContext } from "../../../../contexts";
+import { Spinner } from "../../../Spinner";
 import "./Payment.scss";
 
 function createMarkup(html) {
@@ -28,7 +28,7 @@ function Instructions({ instructions = [] }) {
 }
 
 function Payment() {
-  const { flywire, values } = useAppContext();
+  const { flywire, values } = useFlywireContext();
   const [payment, setPayment] = useState({});
 
   useEffect(() => {
@@ -38,7 +38,7 @@ function Payment() {
       const { id: orderId, token } = await flywire.order.create(values);
       const response = await flywire.payment.create({
         orderId,
-        token
+        token,
       });
       console.log(response);
       setPayment(response);
@@ -56,7 +56,7 @@ function Payment() {
   if (Object.keys(payment).length === 0) {
     return (
       <div className="Payment">
-        <h2>Creating your payment...</h2>
+        <Spinner />
       </div>
     );
   }
