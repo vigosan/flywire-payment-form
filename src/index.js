@@ -5,9 +5,9 @@ import {
   AppProvider,
   FlywireProvider,
   FormProvider,
-  StepsProvider,
+  StepsProvider
 } from "./contexts";
-import { Recipient, Wizard } from "./components";
+import { Recipient, Wizard, Ribbon } from "./components";
 import * as serviceWorker from "./serviceWorker";
 import { steps } from "./components/Wizard";
 
@@ -20,6 +20,7 @@ ReactDOM.render(
             <div className="container">
               <Recipient />
               <Wizard />
+              <Ribbon />
             </div>
           </StepsProvider>
         </FormProvider>
