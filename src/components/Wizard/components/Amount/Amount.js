@@ -4,7 +4,7 @@ import { MoneyInput as MoneyInputFly, Button } from "flycomponents";
 import {
   useAppContext,
   useStepsContext,
-  useFormContext
+  useFormContext,
 } from "../../../../contexts";
 import "./Amount.scss";
 
@@ -12,15 +12,15 @@ const constraints = {
   amount: {
     presence: true,
     numericality: {
-      greaterThan: 0
-    }
-  }
+      greaterThan: 0,
+    },
+  },
 };
 
 function Amount() {
   const { goToNextStep, goToPrevStep } = useStepsContext();
   const { recipient } = useAppContext();
-  const { dirtyFields, handleChange, values } = useFormContext();
+  const { dirtyFields, update, values } = useFormContext();
 
   const inputRef = useRef();
   const [amount, setAmount] = useState(0);
@@ -46,7 +46,7 @@ function Amount() {
   }
 
   function handleButtonClick() {
-    handleChange("amount", amount);
+    update("amount", amount);
     goToNextStep();
   }
 

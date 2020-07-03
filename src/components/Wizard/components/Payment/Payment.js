@@ -1,5 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { useFlywireContext, useFormContext } from "../../../../contexts";
+import { Button } from "flycomponents";
+import {
+  useFlywireContext,
+  useFormContext,
+  useStepsContext,
+} from "../../../../contexts";
 import { Spinner } from "../../../Spinner";
 import "./Payment.scss";
 
@@ -30,6 +35,7 @@ function Instructions({ instructions = [] }) {
 function Payment() {
   const { flywire } = useFlywireContext();
   const { values } = useFormContext();
+  const { navigation } = useStepsContext();
 
   const [payment, setPayment] = useState({});
 
@@ -40,7 +46,7 @@ function Payment() {
       const { id: orderId, token } = await flywire.order.create(values);
       const response = await flywire.payment.create({
         orderId,
-        token
+        token,
       });
       setPayment(response);
     }
@@ -71,6 +77,14 @@ function Payment() {
       </p>
       <div className="Payment-instructions">
         <Instructions instructions={payment.instructions} />
+      </div>
+      <div>
+        <Button
+          className="Button Button--secondary"
+          onClick={() => navigation.go(0)}
+        >
+          I want to pay again!
+        </Button>
       </div>
     </div>
   );

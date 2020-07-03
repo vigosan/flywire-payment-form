@@ -43,7 +43,7 @@ function OfferBox({ name, price, exchangeRate, onClick }) {
 
 function Offer() {
   const { flywire } = useFlywireContext();
-  const { handleChange } = useFormContext();
+  const { update } = useFormContext();
   const { goToNextStep, goToPrevStep } = useStepsContext();
 
   const [offers, setOffers] = useState([]);
@@ -66,7 +66,7 @@ function Offer() {
   }, [flywire.offer]);
 
   function handleOnClick(code) {
-    handleChange("offer", code);
+    update("offer", code);
     goToNextStep();
   }
 

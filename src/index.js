@@ -5,7 +5,7 @@ import {
   AppProvider,
   FlywireProvider,
   FormProvider,
-  StepsProvider
+  StepsProvider,
 } from "./contexts";
 import { Recipient, Wizard, Ribbon } from "./components";
 import * as serviceWorker from "./serviceWorker";

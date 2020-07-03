@@ -1,17 +1,17 @@
 import React, { createContext, useContext } from "react";
-import { useForm } from "@flywire/react-hooks";
+import { useFormState } from "@flywire/react-hooks";
 
 const FormContext = createContext();
 
 function FormProvider({ children }) {
-  const { values, handleChange, dirtyFields } = useForm();
+  const { values, update, dirtyFields } = useFormState();
 
   return (
     <FormContext.Provider
       value={{
         values,
-        handleChange,
-        dirtyFields
+        update,
+        dirtyFields,
       }}
     >
       {children}

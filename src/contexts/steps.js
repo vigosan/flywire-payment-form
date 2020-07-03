@@ -6,7 +6,7 @@ const StepsContext = createContext();
 function StepsProvider({ children, steps }) {
   const { index, navigation, complete, uncomplete, completed } = useStep({
     initialStep: 0,
-    steps
+    steps,
   });
 
   function goToNextStep() {
@@ -26,7 +26,8 @@ function StepsProvider({ children, steps }) {
         goToPrevStep,
         index,
         steps,
-        completed
+        completed,
+        navigation,
       }}
     >
       {children}
