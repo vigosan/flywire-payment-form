@@ -2,6 +2,8 @@
 
 Example application of how to build a payment experience using Flywire.
 
+[Demo](https://flywire-payment-form.vercel.app)
+
 ## Libraries
 
 - [react-hooks](https://github.com/peertransfer/react-hooks)
