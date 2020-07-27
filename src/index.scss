@@ -10,11 +10,19 @@
 @import "~flystyles/src/components/InputGroup/InputGroup";
 @import "~flystyles/src/components/FileInput/FileInput";
 @import "~flystyles/src/components/FormGroup/FormGroup";
+
 @import "~flystyles/src/components/Label/Label";
 
 .container {
   width: 640px;
   margin: 50px auto;
+}
+
+@media only screen and (max-width: 768px) {
+  .container {
+    width: 100%;
+    padding: 20px;
+  }
 }
 
 .Button--link {
