@@ -65,3 +65,14 @@
 .Offer-info {
   margin-top: 20px;
 }
+
+@media only screen and (max-width: 768px) {
+  .Offer-list {
+    flex-direction: column;
+  }
+
+  .Offer-box {
+    min-width: 100%;
+    max-width: 100%;
+  }
+}
