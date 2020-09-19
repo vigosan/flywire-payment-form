@@ -1,0 +1,40 @@
+.CreditCardPayment {
+  position: relative;
+  margin: 50px auto;
+
+  form {
+    margin: 40px 0;
+  }
+
+  .FormGroup {
+    margin-bottom: 12px;
+  }
+
+  .CreditCard {
+    margin: 0 auto;
+  }
+
+  .Button--primary {
+    margin-top: 8px;
+  }
+}
+
+.CreditCardPayment-paid {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-flow: column;
+  height: 150px;
+
+  h2 {
+    font-size: 16px;
+    margin-bottom: 20px;
+  }
+}
+
+.CreditCardPayment-row {
+  width: 100%;
+  display: inline-grid;
+  grid-template-columns: 1fr 1fr 100px;
+  column-gap: 20px;
+}
