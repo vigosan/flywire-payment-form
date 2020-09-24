@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Flywire Payment Form",
+  "name": "Demo app using modular payex",
   "icons": [
     {
       "src": "favicon.ico",
