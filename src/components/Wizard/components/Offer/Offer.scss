@@ -1,10 +1,6 @@
 .Offer {
   margin-top: 30px;
   text-align: center;
-}
-
-.Offer {
-  text-align: center;
 
   h3 {
     font-size: 18px;
@@ -16,66 +12,26 @@
 .Offer-list {
   display: flex;
   text-align: center;
-}
+  justify-content: center;
 
-.Offer-box {
-  flex-grow: 1;
-  min-width: 50%;
-  max-width: 50%;
-  padding: 25px;
-  margin-bottom: 10px;
-
-  .Button {
-    opacity: 0;
-    transition: 1s;
+  .Offer-box--basic {
+    margin-bottom: 20px;
+    flex: 1px;
   }
 
-  &:hover {
-    cursor: pointer;
+  .Offer-box--detailed {
+    margin-bottom: 20px;
+    flex: 1px;
+    padding-top: 20px;
 
-    .Button {
-      opacity: 1;
+    .Offer-logo {
+      margin-bottom: 12px;
     }
   }
-}
-
-.Offer-header {
-  color: #888;
-  font-weight: 600;
-  letter-spacing: 1px;
-  font-size: 16px;
-  min-height: 75px;
-  text-transform: uppercase;
-}
-
-.Offer-price {
-  color: #1585e0;
-  display: block;
-  font-size: 32px;
-  font-weight: 700;
-}
-
-.Offer-exchangeRate {
-  display: block;
-  color: #888;
-  margin-bottom: 45px;
-  font-size: 14px;
-}
-
-.Offer-info {
-  margin-top: 20px;
 }
 
 @media only screen and (max-width: 768px) {
   .Offer-list {
     flex-direction: column;
-  }
-
-  .Offer-box {
-    min-width: 100%;
-    max-width: 100%;
-    .Button {
-      opacity: 1;
-    }
   }
 }

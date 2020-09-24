@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Button } from "flycomponents";
+import { Offer as FwOffer } from "@flywire/react-flywire-js";
 import {
   useFlywireContext,
   useFormContext,
@@ -8,44 +9,15 @@ import {
 import { Spinner } from "../../../Spinner";
 import "./Offer.scss";
 
-function Price({ amount, currency }) {
-  return new Intl.NumberFormat("en-EN", {
-    style: "currency",
-    currency: "EUR",
-  }).format(amount);
-}
-
-function OfferBox({ name, price, exchangeRate, onClick }) {
-  return (
-    <div className="Offer-box" onClick={onClick}>
-      <img
-        src="https://s22.postimg.cc/8mv5gn7w1/paper-plane.png"
-        alt=""
-        className="pricing-img"
-      />
-      <h2 className="Offer-header">{name}</h2>
-      <span className="Offer-price">
-        <Price
-          amount={price.value / price.currency.subunitToUnit}
-          currency={price.currency.code}
-        />
-      </span>
-      <span className="Offer-exchangeRate">Exchange Rate {exchangeRate}</span>
-      <Button
-        className="Button Button--primary Button--block"
-        onClick={onClick}
-      >
-        Select
-      </Button>
-    </div>
-  );
-}
+const logos = [
+  "https://p43.f3.n0.cdn.getcloudapp.com/items/YEuyq70k/bank-transfer-logo.png",
+  "https://p43.f3.n0.cdn.getcloudapp.com/items/7Ku84Y9D/amex-logo.png",
+];
 
 function Offer() {
   const { flywire } = useFlywireContext();
   const { update } = useFormContext();
   const { goToNextStep, goToPrevStep } = useStepsContext();
-
   const [offers, setOffers] = useState([]);
 
   useEffect(() => {
@@ -78,11 +50,18 @@ function Offer() {
     <div className="Amount">
       <h2>Select an offer</h2>
       <div className="Offer-list">
-        {offers.map((offer) => (
-          <OfferBox
-            {...offer}
+        {offers.map((offer, i) => (
+          <FwOffer.Detailed
+            amount={offer.price.value}
+            currency={offer.price.currency.code}
+            exchangeRate={offer.exchangeRate}
+            logoUrl={logos[i]}
+            name={offer.name
+              .replace(" in Euros (EUR)", "")
+              .replace("Domestic ", "")}
+            subunit={offer.price.currency.subunitToUnit}
             key={offer.id}
-            onClick={() => handleOnClick(offer.id)}
+            onSelect={() => handleOnClick(offer.id)}
           />
         ))}
       </div>

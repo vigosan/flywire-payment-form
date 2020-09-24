@@ -4,7 +4,7 @@
   "private": true,
   "dependencies": {
     "@flywire/flywire-js": "0.0.6",
-    "@flywire/react-flywire-js": "0.0.5",
+    "@flywire/react-flywire-js": "0.0.6",
     "@flywire/react-hooks": "0.0.11",
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.0.4",
