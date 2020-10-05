@@ -8,6 +8,7 @@ Example application of how to build a payment experience using Flywire.
 
 - [react-hooks](https://github.com/peertransfer/react-hooks)
 - [flywire-js](https://github.com/peertransfer/flywire-js)
+- [react-flywire-js](https://github.com/peertransfer/react-flywire-js)
 - [flycomponents](https://github.com/peertransfer/flycomponents)
 - [flystyles](https://github.com/peertransfer/flystyles)
 
